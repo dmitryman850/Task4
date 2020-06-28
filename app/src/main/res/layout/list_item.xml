@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text=" Model Car: "
+            android:text=" Model Car:"
             android:textStyle="bold"/>
     <TextView android:id="@+id/text1"
         android:textSize="16sp"
@@ -23,9 +23,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text=" Year:           "
+            android:text=" Year:"
             android:textStyle="bold"/>
     <TextView android:id="@+id/text2"
         android:textSize="16sp"
@@ -37,9 +37,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text=" Price:          "
+            android:text=" Price:"
             android:textStyle="bold"/>
     <TextView
         android:id="@+id/text3"
