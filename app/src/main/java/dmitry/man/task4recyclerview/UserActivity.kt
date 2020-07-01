@@ -47,8 +47,8 @@ class UserActivity : AppCompatActivity() {
             )
             userCursor.moveToFirst()
             nameBox.setText(userCursor.getString(1))
-            yearBox.setText(userCursor.getInt(2))
-            priceBox.setText(userCursor.getInt(3))
+            yearBox.setText(userCursor.getInt(2).toString())
+            priceBox.setText(userCursor.getInt(3).toString())
             userCursor.close()
         } else {
             //hiding the delete button
