@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Task4RecyclerView</string>
+    <string name="app_name">MyPrilojenkaForCar</string>
+    <string name="btnAdd">Добавить</string>
+    <string name="editModel">Введите модель машины</string>
+    <string name="editYear">Введите год выпуска</string>
+    <string name="editPrice">Введите цену</string>
+    <string name="btnSave">Сохранить</string>
+    <string name="btnDell">Удалить</string>
+    <string name="model">Model Car:</string>
+    <string name="year">Year:</string>
+    <string name="price">Price:</string>
 </resources>

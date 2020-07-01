@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -46,8 +47,8 @@ class UserActivity : AppCompatActivity() {
             )
             userCursor.moveToFirst()
             nameBox.setText(userCursor.getString(1))
-            yearBox.setText(userCursor.getInt(2).toString())
-            priceBox.setText(userCursor.getInt(3).toString())
+            yearBox.setText(userCursor.getInt(2))
+            priceBox.setText(userCursor.getInt(3))
             userCursor.close()
         } else {
             //hiding the delete button
@@ -57,20 +58,20 @@ class UserActivity : AppCompatActivity() {
 
     fun save(view: View?) {
         val cv = ContentValues()
-        cv.put(DatabaseHelper.COLUMN_NAME, nameBox.text.toString())
-        cv.put(DatabaseHelper.COLUMN_YEAR, yearBox.text.toString().toInt())
-        cv.put(DatabaseHelper.COLUMN_PRICE, priceBox.text.toString().toInt())
-        if (userId > 0) {
-            db.update(
-                DatabaseHelper.TABLE,
-                cv,
-                DatabaseHelper.COLUMN_ID + "=" + userId.toString(),
-                null
-            )
-        } else {
-            db.insert(DatabaseHelper.TABLE, null, cv)
-        }
-        goHome()
+            cv.put(DatabaseHelper.COLUMN_NAME, nameBox.text.toString())
+            cv.put(DatabaseHelper.COLUMN_YEAR, yearBox.text.toString().toInt())
+            cv.put(DatabaseHelper.COLUMN_PRICE, priceBox.text.toString().toInt())
+            if (userId > 0) {
+                db.update(
+                    DatabaseHelper.TABLE,
+                    cv,
+                    DatabaseHelper.COLUMN_ID + "=" + userId.toString(),
+                    null
+                )
+            } else {
+                db.insert(DatabaseHelper.TABLE, null, cv)
+            }
+            goHome()
     }
 
     fun delete(view: View?) {

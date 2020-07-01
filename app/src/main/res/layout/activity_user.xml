@@ -8,17 +8,17 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите модель машины"/>
+        android:hint="@string/editModel"/>
     <EditText
         android:id="@+id/year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите год выпуска"/>
+        android:hint="@string/editYear"/>
     <EditText
         android:id="@+id/price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введите цену"/>
+        android:hint="@string/editPrice"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,14 +29,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Сохранить"
+            android:text="@string/btnSave"
             android:onClick="save"/>
         <Button
             android:id="@+id/deleteButton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Удалить"
+            android:text="@string/btnDell"
             android:onClick="delete"/>
     </LinearLayout>
 </LinearLayout>

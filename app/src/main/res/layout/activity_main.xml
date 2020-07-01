@@ -6,9 +6,9 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Добавить"
+        android:text="@string/btnAdd"
         android:onClick="add"
-        android:textSize="18dp"/>
+        android:textSize="18sp"/>
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
