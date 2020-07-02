@@ -13,12 +13,14 @@
         android:id="@+id/year"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/editYear"/>
+        android:hint="@string/editYear"
+        android:inputType="number"/>
     <EditText
         android:id="@+id/price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/editPrice"/>
+        android:hint="@string/editPrice"
+        android:inputType="number"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

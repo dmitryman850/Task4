@@ -57,7 +57,11 @@ class UserActivity : AppCompatActivity() {
     }
 
     fun save(view: View?) {
-        val cv = ContentValues()
+        if (nameBox.text.toString() == "" || yearBox.text.toString() == "" ||
+                priceBox.text.toString() == "") {
+            val toast = Toast.makeText(applicationContext, "Введите данные", Toast.LENGTH_SHORT).show()
+        } else {
+            val cv = ContentValues()
             cv.put(DatabaseHelper.COLUMN_NAME, nameBox.text.toString())
             cv.put(DatabaseHelper.COLUMN_YEAR, yearBox.text.toString().toInt())
             cv.put(DatabaseHelper.COLUMN_PRICE, priceBox.text.toString().toInt())
@@ -72,6 +76,7 @@ class UserActivity : AppCompatActivity() {
                 db.insert(DatabaseHelper.TABLE, null, cv)
             }
             goHome()
+        }
     }
 
     fun delete(view: View?) {
