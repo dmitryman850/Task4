@@ -1,14 +1,20 @@
 package dmitry.man.task4recyclerview
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.os.Build.ID
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
 import android.widget.SimpleCursorAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.preference.PreferenceManager
+import dmitry.man.task4recyclerview.DatabaseHelper.Companion.COLUMN_NAME
+import dmitry.man.task4recyclerview.DatabaseHelper.Companion.COLUMN_PRICE
+import dmitry.man.task4recyclerview.DatabaseHelper.Companion.COLUMN_YEAR
 
 
 class MainActivity : AppCompatActivity() {
@@ -37,8 +43,14 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         //open the connection
         db = databaseHelper.readableDatabase
-        //getting data from db as a cursor
-        userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE, null)
+
+       val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        //getting data from db as a cursor, depending on key
+        when(prefs.getString("sortList", "Модель")) {
+            "Модель" -> userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE + " ORDER BY " + COLUMN_NAME, null)
+            "Год" -> userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE + " ORDER BY " + COLUMN_YEAR, null)
+            "Цена" -> userCursor = db.rawQuery("select * from " + DatabaseHelper.TABLE + " ORDER BY " + COLUMN_PRICE, null)
+        }
         //determining which columns from the cursor will be output to ListView
         val headers =
             arrayOf(DatabaseHelper.COLUMN_NAME, DatabaseHelper.COLUMN_YEAR, DatabaseHelper.COLUMN_PRICE)
@@ -51,6 +63,11 @@ class MainActivity : AppCompatActivity() {
     //click on the button to launch UserActivity to add data
     fun add(view: View?) {
         val intent = Intent(this, UserActivity::class.java)
+        startActivity(intent)
+    }
+    //click on the button to launch SettingsActivity
+    fun sort(view: View?) {
+        val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
 

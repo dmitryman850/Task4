@@ -1,7 +1,6 @@
 package dmitry.man.task4recyclerview
 
 import android.content.ContentValues
-import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
@@ -34,7 +33,7 @@ class UserActivity : AppCompatActivity() {
         delButton = findViewById(R.id.deleteButton)
         saveButton = findViewById(R.id.saveButton)
         sqlHelper = DatabaseHelper(this)
-        db = sqlHelper.writableDatabase
+        db = sqlHelper.readableDatabase
         val extras = intent.extras
         if (extras != null) {
             userId = extras.getLong("id")
@@ -75,21 +74,19 @@ class UserActivity : AppCompatActivity() {
             } else {
                 db.insert(DatabaseHelper.TABLE, null, cv)
             }
-            goHome()
+            finish()
         }
     }
 
     fun delete(view: View?) {
         db.delete(DatabaseHelper.TABLE, "_id = ?", arrayOf(userId.toString()))
-        goHome()
+        finish()
     }
 
-    private fun goHome() {
-        //close the connection
-        db.close()
-        //go to the main activity
-        val intent = Intent(this, MainActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-        startActivity(intent)
-    }
+//    private fun goHome() {
+//        //close the connection
+//        db.close()
+//        //go to the main activity
+//        finish()
+//    }
 }

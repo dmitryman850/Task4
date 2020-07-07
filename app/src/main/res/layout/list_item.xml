@@ -12,6 +12,7 @@
             android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:text="@string/model"
+            android:paddingStart="5dp"
             android:textStyle="bold"/>
         <TextView
         android:id="@+id/text1"
@@ -27,6 +28,7 @@
             android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:text="@string/year"
+            android:paddingStart="5dp"
             android:textStyle="bold"/>
     <TextView
         android:id="@+id/text2"
@@ -42,6 +44,7 @@
             android:layout_width="80sp"
             android:layout_height="wrap_content"
             android:text="@string/price"
+            android:paddingStart="5dp"
             android:textStyle="bold"/>
     <TextView
         android:id="@+id/text3"

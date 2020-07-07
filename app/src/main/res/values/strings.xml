@@ -9,4 +9,17 @@
     <string name="model">Model Car:</string>
     <string name="year">Year:</string>
     <string name="price">Price:</string>
+    <string name="selectSort">Выберите сортировку списка машин</string>
+    <string name="sortCar">Сортировка машин</string>
+    <string name="btnSort">Сортировка</string>
+    <string-array name="entries">
+        <item>По названию модели</item>
+        <item>По году выпуска</item>
+        <item>По цене</item>
+    </string-array>
+    <string-array name="entry_values">
+        <item>Модель</item>
+        <item>Год</item>
+        <item>Цена</item>
+    </string-array>
 </resources>
