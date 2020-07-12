@@ -1,7 +1,7 @@
 package dmitry.man.task4recyclerview
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 
 class SettingsActivity : AppCompatActivity() {
@@ -13,10 +13,9 @@ class SettingsActivity : AppCompatActivity() {
             .add(R.id.prefs_content, SettingsFragment())
             .commit()
     }
-    class SettingsFragment: PreferenceFragmentCompat() {
+    class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             addPreferencesFromResource(R.xml.settings)
         }
-
     }
 }

@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-
 class UserActivity : AppCompatActivity() {
 
     private lateinit var nameBox: EditText
@@ -24,6 +23,7 @@ class UserActivity : AppCompatActivity() {
     private lateinit var db: SQLiteDatabase
     private lateinit var userCursor: Cursor
     private var userId: Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
@@ -39,18 +39,18 @@ class UserActivity : AppCompatActivity() {
             userId = extras.getLong("id")
         }
         if (userId > 0) {
-            //getting an element by ID from the DB
+            // getting an element by ID from the DB
             userCursor = db.rawQuery(
                 "select * from " + DatabaseHelper.TABLE + " where " +
                         DatabaseHelper.COLUMN_ID + "=?", arrayOf(userId.toString())
             )
             userCursor.moveToFirst()
-            nameBox.setText(userCursor.getString(1))
-            yearBox.setText(userCursor.getInt(2).toString())
-            priceBox.setText(userCursor.getInt(3).toString())
+            nameBox.setText(userCursor.getString(nameColumnIndex))
+            yearBox.setText(userCursor.getInt(yearColumnIndex).toString())
+            priceBox.setText(userCursor.getInt(priceColumnIndex).toString())
             userCursor.close()
         } else {
-            //hiding the delete button
+            // hiding the delete button
             delButton.visibility = View.GONE
         }
     }
@@ -74,19 +74,25 @@ class UserActivity : AppCompatActivity() {
             } else {
                 db.insert(DatabaseHelper.TABLE, null, cv)
             }
-            finish()
+            goHome()
         }
     }
 
     fun delete(view: View?) {
         db.delete(DatabaseHelper.TABLE, "_id = ?", arrayOf(userId.toString()))
+        goHome()
+    }
+
+    private fun goHome() {
+        // close the connection
+        db.close()
+        // go to the main activity
         finish()
     }
 
-//    private fun goHome() {
-//        //close the connection
-//        db.close()
-//        //go to the main activity
-//        finish()
-//    }
+    companion object {
+        private const val nameColumnIndex = 1
+        private const val yearColumnIndex = 2
+        private const val priceColumnIndex = 3
+    }
 }
